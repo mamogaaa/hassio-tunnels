@@ -15,7 +15,7 @@ instance separately.
 ## How to use
 
 1. Make sure you've met the requirements listed above.
-2. Add the Github repo to your Hass.io: <https://github.com/mamogaaa/hassio-tunnels>
+2. Add the Github repo to your Hass.io: <https://github.com/mamogaaa/hassio-addons>
 3. Install the addon
 4. Configure the options in the addon (see descriptions for each option below).
 5. Add this addon to your `trusted_proxies` list in `configuration.yaml`.
