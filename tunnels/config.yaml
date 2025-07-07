@@ -1,9 +1,9 @@
-name: SSH Tunneling Client
-version: 0.0.1
+name: Persistent SSH Tunnels
+version: 0.0.2
 slug: tunnels
 init: false
-description: Establishes SSH tunnels for allow secure remote access.
-url: https://github.com/dy1io/hassio-addons
+description: Establishes persistent SSH tunnels with automatic reconnection for secure remote access.
+url: https://github.com/mamogaaa/hassio-tunnels
 stage: experimental
 arch:
   - aarch64
