@@ -10,6 +10,10 @@ options+=(-i "$KEYSTORE/tunnels_rsa")
 options+=(-o StrictHostKeyChecking=no)
 options+=(-o ServerAliveInterval=$(bashio::config 'ServerKeepAliveInterval'))
 options+=(-o PubkeyAcceptedKeyTypes=ssh-rsa)
+options+=(-o ExitOnForwardFailure=no)
+options+=(-o ConnectTimeout=10)
+options+=(-o ServerAliveCountMax=3)
+options+=(-N)
 
 for id in $(bashio::config "tunnels|keys"); do
   tunnel=$(bashio::config "tunnels[${id}].tunnel")
@@ -38,5 +42,9 @@ bashio::log.debug "Options built"
 bashio::log.debug "Command to execute:"
 bashio::log.debug "ssh ${options[@]}"
 
-bashio::log.info "Attempting to establish SSH tunnels..."
-exec ssh ${options[@]}
+while true; do
+  bashio::log.info "Attempting to establish SSH tunnels..."
+  ssh ${options[@]}
+  bashio::log.warning "SSH connection lost. Retrying in 10 seconds..."
+  sleep 10
+done
